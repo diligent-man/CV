@@ -1,0 +1,174 @@
+\documentclass[11pt]{spidercv}
+\usepackage{hyperref}
+\usepackage{graphicx} 					% insert picture
+\usepackage{fontspec}
+\defaultfontfeatures{Path =/home/trong/texlive/2023/texmf-dist/fonts/opentype/public/fontawesome/}
+\usepackage{fontawesome}
+
+
+\newcommand{\img}[3]{
+	\includegraphics[width=#1, height=#2]{{Img/#3}}}
+
+
+\begin{document}
+	\PrintableMode
+	\begin{TopBar}{\ColorTextSide}
+		\Name{\ColorHighlight}{Nguyen Duc Trong}{Data/AI engineer internship}{}
+		%%% Contact
+		\SimpleSeparator{\ColorHighlight}
+		Contact Information
+		\SimpleSeparator{\ColorHighlight}
+		\begin{DoubleColumns}
+			\begin{ItemList}{\ColorHighlight}
+				\item [\Large\faGoogle] trongnd02@gmail.com
+				\item [\Large\faMobile] 0931 469 045
+			\end{ItemList}
+			\nextcolumn
+			\begin{ItemList}{\ColorHighlight}
+			\item [\Large\faHome] District 6, Ho Chi Minh city
+			\end{ItemList}
+		\end{DoubleColumns}
+	\end{TopBar}
+
+
+	\begin{SideBar}{\ColorBackground}{\ColorTextSide}
+		\TextSeparatorBis{\ColorHighlight}{Education}{FPTU}
+		\vspace{-0.5cm}
+		\begin{ItemList}{\ColorHighlight}
+			\item \hspace{-.5cm} 3 times honorable student
+			\item \hspace{-.5cm} 1 time excellent student
+		\end{ItemList}
+		
+		
+		\TextSeparatorBis{\ColorHighlight}{Technical skills}{}
+		\vspace{-0.5cm}
+		\begin{ItemList}{\ColorHighlight}
+			\item  \hspace{-.5cm} ML/ DL, NLP, Python, Git, Docker\\
+			\item  \hspace{-.5cm} AWS(EC2)
+		\end{ItemList}
+		
+		
+		\TextSeparatorBis{\ColorHighlight}{Data skills}{}
+		\vspace{-0.5cm}
+		\begin{ItemList}{\ColorHighlight}
+			\item \hspace{-.5cm} Data manipulation, crawling, EDA
+			\item \hspace{-.5cm} SQL (TSQL), NoSQL (MongoDB)
+		\end{ItemList}
+		
+				
+		\TextSeparatorBis{\ColorHighlight}{Tools}{}
+		\vspace{-0.5cm}
+		\begin{ItemList}{\ColorHighlight}
+			\item  \hspace{-.5cm} Orange, DBeaver, Paradigm
+		\end{ItemList}
+				
+		
+		\TextSeparatorBis{\ColorHighlight}{Languages}{}
+		\vspace{-0.5cm}
+		\begin{ItemList}{\ColorHighlight}
+			\item \hspace{-.5cm} Japanese (\textasciitilde N5)
+			\item \hspace{-.5cm} English (IELTS 6.0)
+		\end{ItemList}
+		
+		
+		\TextSeparatorBis{\ColorHighlight}{Certificates}{}
+		\vspace{-0.5cm}
+		\begin{ItemList}{\ColorHighlight}
+			\item \hspace{-.5cm} 1/ Basic \& Intermediate SQL\\
+			\hspace{-6.6mm} Organizer: HackerRank
+			
+			\item \hspace{-.5cm} 2/ Basic Python programming\\
+			\hspace{-6.6mm} Organizer: HackerRank
+			
+			\item \hspace{-.5cm} 3/ Spring volunteer campaign\\
+			\hspace{-6.6mm} Organizer: USSH
+		\end{ItemList}
+		
+			
+		\TextSeparatorBis{\ColorHighlight}{Hobbies}{}
+		\vspace{-0.5cm}
+		\begin{ItemList}{\ColorHighlight}
+			\item [\faCode] \LaTeX, Python, Linux
+			\item [\faBook] Sci-fi, Linguistics, AI-related
+			\item [\faMusic] Pop, Ballad, Country
+			\item [\faLanguage] Eng, Jap
+		\end{ItemList}
+		
+		
+		
+		\TextSeparatorBis{\ColorHighlight}{Social Network}{}
+		\vspace{-0.5cm}
+		\begin{ItemList}{\ColorHighlight}
+			\item [\faGithub] \href{github.com/diligent-man}{github.com/diligent-man}.
+			\item [\faLinkedinSquare] \href{www.linkedin.com/in/trongnd02}{www.linkedin.com/in/trongnd02}.
+		\end{ItemList}
+	
+	\end{SideBar}
+	
+	\DefineProfile{\ColorOther}{\ColorTextSide}{Ava/ava2.jpg}
+	
+	\begin{MainPart}
+		%%% Experiences 
+		\MainTitle{\ColorHighlight}{\ColorTextMain}{}
+		\Experience
+		{\ColorHighlight}
+		{\Large Objective}
+		{}
+		{}
+		{
+			In the following OJT semester, I am seeking an opportunity to participate in data engineer team. In case of lacking vacancy, nevertheless, I have no hesitation in NLP project led of Nguy\~{ê}n Võ Thành Khang\\
+			\vspace{.15cm}
+			I truly believe that not only my skill set but also my personality traits, be it diligence, inquisitiveness, and fastidiousness, will make me an ideal candidate.\\
+			\vspace{.15cm}
+			I desire to acquire some more technical skills including cloud computing, NLP, big data as quick as possible down the road.
+		}
+
+
+		%%% Project
+		\MainTitle{\ColorHighlight}{\ColorTextMain}{Projects}
+		\Experience
+		{\ColorHighlight}
+		{Spelling correction}
+		{Status: Maintaining (18/09/2023)}
+		{Team project}
+		{
+		 \textbf{Role}: Leader\\
+		 \vspace{.15cm}
+		 \textbf{Description}: An basic web app incorporated with original Transformer model with two slight modifications.\\
+		 \vspace{.15cm}
+		 \textbf{Technologies}: NLTK, Regex, Torch, Ngrok, HTML/ CSS, JS\\
+		 \vspace{.15cm}
+		 \textbf{Future development}: Extend to Vietnamese, enhance model accuracy, dockerize \& deploy on EC2.
+		}
+		
+		
+		\Experience
+		{\ColorHighlight}
+		{Movie recommendation system}
+		{Status: In progress (01/07/2023)}
+		{Personal project}
+		{
+			\textbf{Description}: Recommendation system using cosine similarity technique and being deployed by streamlib. Movie data \& metadata were crawled with the assistance of multiprocessing, followed by EDA and wrangling procedures.\\
+			\vspace{.15cm}
+			\textbf{Technologies}: pandas, multiprocessing, matplotlib, wordcloud, seaborn, plotly, streamlib.\\
+			\vspace{.15cm}
+			\textbf{Future development}: Integrate rule-based or DNN chatbot.
+		}
+		
+		
+		\MainTitle{\ColorHighlight}{\ColorTextMain}{Mini project}
+		\Experience
+		{\ColorHighlight}
+		{Cursor controlling with hand gestures}
+		{Finished}
+		{Personal project}
+		{
+			\textbf{Description}: Control cursor with hand gestures using mediapipe library for hand recognition\\
+			\vspace{.15cm}
+			\textbf{Technologies}: mediapipe, opencv, autopy, pynput\\
+			\vspace{.15cm}
+		}
+	\end{MainPart}
+\end{document}
+
+
