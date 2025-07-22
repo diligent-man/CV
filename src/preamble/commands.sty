@@ -1,0 +1,233 @@
+\ProvidesPackage{src/preamble/commands}
+
+\RequirePackage{src/preamble/layout}
+\RequirePackage{src/preamble/load_packages}
+
+
+\definecolor{Black}{HTML}{212121}
+\definecolor{White}{HTML}{FFFFFF}
+\definecolor{GreenArmy}{HTML}{252E25}
+\definecolor{GreenIT}{HTML}{4CAF50}
+
+
+% ---------------------- Define new macros -------------------------------- %
+% --------------------- Define new command ------------------------------- %
+\newcommand{\ColorTextSide}{White}
+\newcommand{\ColorTextMain}{Black}
+\newcommand{\ColorHighlight}{Cyan4}
+\newcommand{\ColorBackground}{Black}
+\newcommand{\ColorOther}{GreenArmy}
+
+
+\newcommand{\PrintableMode}{
+    \def\PM{} % PM command used in if statements
+    \def\ColorTextSide{\ColorTextMain} % Use same text color everywhere
+}
+
+
+\newcommand{\lorem}{Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus.} % Dummy text
+
+
+\newcommandx{\img}[5][1=4cm,2=2cm,3=0,4=1]{
+	\includegraphics[width=#1,height=#2,angle=#3,scale=#4]{{#5}}
+}
+
+
+\newcommandx{\MakeOrnament}[3][1=0,2=false]{
+    \begin{adjustbox}{max height=0.5\baselineskip, max width=1.2\baselineskip}
+    % Rescaling to have height of 0.5\baselineskip
+    \raisebox{-0.3\baselineskip}{
+        \rotatebox[origin=c]{#1}{
+            \psvectorian[mirror=#2]{#3}
+            }
+        }
+    \end{adjustbox}
+}
+
+
+\newcommand{\Avatar}[3]
+{
+    % Background color, Highlight color, Img path
+    \begin{tikzpicture}[remember picture,overlay]
+%        \node [rectangle, draw=#2, rounded corners=0.5mm, very thick,
+%        shift={(current page.north west)}, xshift=\anglesize, yshift=-\anglesize,
+%        ](s1){};
+%        \node [rectangle, draw=#2, rounded corners=0.5mm, very thick,
+%        shift={(current page.north west)}, xshift=(\sidewidth+1\margin), yshift=-(\sidewidth+1\margin),
+%        ](s2){};
+%        \draw [draw=#2, very thick]
+%        (s1) -- (s2);
+
+        %%%%%%%%%%%%%%%
+        \def\backcolor{\ifx\PM\undefined#1\else White\fi}
+        \node[
+            shift={(current page.north west)},
+            xshift=(\sidewidth+1.7\margin)/2,
+            yshift=-(\sidewidth+2.5\margin)/2,
+            rectangle, draw=#2, very thick,
+          minimum width=3.46cm,
+          minimum height=4.26cm,
+%          minimum size=\profilesize,
+          fill=\backcolor,
+          path picture={
+            \node at (path picture bounding box.center){
+                \img[3.4cm][0.7\topheight]{#3}
+            };
+          }]
+          {};
+      \end{tikzpicture}
+}
+
+
+% Text separators
+\newcommand{\RawText}[3]{
+    % Text
+    \noindent\makebox[6.5cm][l]{
+        {\hspace{-0.75ex}\raisebox{#1}\normalsize{\color{#2}#3}}
+    }
+}
+
+
+\newcommand{\TextSeparator}[2]{
+    % Highlight color, Text
+    \noindent\makebox[\linewidth]{{\color{#1}\hrulefill}
+        \hspace{1ex}\raisebox{-.4ex}{\textbf{\large{#2}}}
+        \hspace{1ex}{\color{#1}\hrulefill}
+    }
+}
+
+
+\newcommand{\TextSeparatorBis}[3]{
+    % Highlight color, Left text, Right text
+    \noindent\makebox[1.07\linewidth]{\raisebox{-.4ex}{\textbf{\large{#2}}}\hspace{1ex}
+        {\color{#1}\hrulefill}
+        \hspace{1ex}\raisebox{-.4ex}{\textbf{\large{#3}}}
+    }
+}
+
+
+\newcommand{\SimpleSeparator}[1]
+    {
+    % Highlight color
+    \noindent\makebox[0.95\linewidth]{
+        {\color{#1}\hrulefill}
+    }
+}
+
+
+% Top bar
+\newcommandx{\Name}[4][1=Black,2=0cm]{
+    % Highlighted Name, Profession
+    \hspace{#2}\HUGE{\textbf{\color{#1}\vspace{1mm}#3}}\newline
+    \Large{#4}\\
+    \vspace{1mm}
+    \Large{\MakeOrnament[0][true]{127}\hspace{-2mm}\calligra Semper Paratus\hspace{-2mm}\MakeOrnament[0][false]{127}}
+    \vspace{-3mm}
+}
+
+
+% Main part
+\newcommand{\MainTitleBis}[4]{
+    %Background color, Highlight color, Left text, Right text
+    \begin{tikzpicture}[baseline]
+        \def\backcolor{\ifx\PM\undefined#1\else White\fi}
+        \node[draw=#2,rounded corners,fill=\backcolor,inner sep=3pt, very thick, anchor=west]
+        at (0,0) (box1)
+            {\textbf{\Large\color{#2}#3}};
+        \node[draw=#2,rounded corners,fill=\backcolor,inner sep=3pt, very thick, anchor=east]
+        at (\textwidth,0) (square)
+        {\textbf{\Large\color{#2}#4}};
+        \draw [very thick, draw=#2, inner sep=0pt] (box1) -- (square);
+    \end{tikzpicture}\\
+}
+\newcommand{\MainTitle}[3]{
+    %Background color, Highlight color, Title text
+    \begin{tikzpicture}[baseline]
+            \def\backcolor{\ifx\PM\undefined#1\else White\fi}
+            \node[draw=#2,rounded corners,fill=\backcolor,inner sep=3pt, very thick, anchor=west]
+            at (0,0) (box1)
+            {\textbf{\Large\color{#2}#3}};
+            \node at (\textwidth,0) [rectangle, draw=#2,rounded corners=0.5mm,fill=\backcolor, anchor=east, very thick] (square) {};
+        \draw [very thick, draw=#2, inner sep=0pt] (box1) -- (square);
+    \end{tikzpicture}\\
+}
+
+
+\newcommand{\Experience}[5]{
+    %Highlight color,  Title, Left subtitle, Right subtitle, Description
+    \begin{FlushLeft}
+        \large{\textbf{#2\hfill{\small\color{#1}#4}}}\\\vspace{-.4ex}
+        \small{{\color{#1}\hrulefill}
+        \hspace{1ex}\raisebox{-.4ex}{\color{Black}\textbf{#3}}
+        }\\
+        % Description
+        \normalsize{#5}
+    \end{FlushLeft}
+}
+
+\newcommand{\ContinuedExperience}[2]{
+	%Highlight color,  Title, Left subtitle, Right subtitle, Description
+	\begin{FlushLeft}
+	\begin{textblock*}{\mainwidth}(\sidewidth+3\margin,\margin+\staplercorner)
+		\color{#1}#2
+	\end{textblock*}
+	\end{FlushLeft}
+}
+
+
+
+% ------------------- Redefine available command --------------------------- %
+%\renewcommand\familydefault{\sfdefault} % Force the sans-serif version of any font used
+
+
+%----------------------------------------------------------------------------------------
+%	COMMANDS AND ENVIRONMENTS
+%----------------------------------------------------------------------------------------
+
+%%% Spider chart
+\newcounter{spidercount}
+\ExplSyntaxOn
+\NewDocumentCommand{\newList}{m}
+ {
+  \seq_new:c { l_kees_list_#1_seq }
+ }
+\NewDocumentCommand{\addToList}{mm}
+ {
+  \seq_put_right:cn { l_kees_list_#1_seq } { #2 }
+ }
+\NewDocumentCommand{\getFromList}{mm}
+ {
+  \seq_item:cn { l_kees_list_#1_seq } { #2 }
+ }
+\ExplSyntaxOff
+\newList{skilllist}
+\newList{masterlist}
+
+\newcommand{\addSkill}[2]{ % Skill label, Strenght
+    \stepcounter{spidercount}
+    \addToList{skilllist}{#1}
+    \addToList{masterlist}{#2}
+}
+
+\newcounter{var}
+
+
+%%% Label
+\newcommand{\Label}[2]{
+    % Highlight color, Text
+    \tikz[baseline]\node[anchor=base,draw=#1,rounded corners,inner xsep=1ex,inner ysep =0.75ex,text height=1.5ex,text depth=.25ex, thick]{#2};
+}
+
+
+
+%%% Skill Gauges
+\newenvironment{SkillGauges}[1]{
+    % Highlight color
+    \def\highlightColor{\color{#1}}
+    \begin{tabular}{l l}
+}{
+    \end{tabular}
+}
+\newcommand{\addGauge}[3][\faSquareO]{% Optional fa symbol | Text | Number of symbols
+    #2 & \foreach \i in{1,...,#3}{\highlightColor#1\space} \\
+}

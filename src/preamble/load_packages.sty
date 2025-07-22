@@ -1,0 +1,33 @@
+\ProvidesPackage{src/preamble/load_packages}
+
+% Called dependencies prior to load derived packages
+\PassOptionsToPackage{hidelinks}{hyperref}  % for xcolor
+
+
+\usepackage[TS1]{fontenc} % Output font encoding for international characters
+%\usepackage[utf8]{inputenc} % Required for inputting international characters
+\usepackage[x11names]{xcolor}  % Use 317 pre-defined named colors
+\usepackage[noheadfoot,a4paper,margin=0.5cm]{geometry}
+\usepackage[absolute,overlay]{textpos} % option needed to use absolute positionning and to have text on front
+
+
+\usepackage{calc}
+\usepackage{tikz}
+\usepackage{xargs}
+\usepackage{ifthen}
+\usepackage{comment}
+\usepackage{calligra}
+\usepackage{mathptmx}  % Time New Romans fontface
+\usepackage{moresize} % Provides more font size commands (\HUGE and \ssmall)
+\usepackage{ragged2e}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{adjustbox}  % Adjustbox to rescale the ornaments (scalebox breaks titlesec for some reason...)
+\usepackage{psvectorian}
+
+
+% Use module of loaded package
+\usetikzlibrary{
+    calc,positioning,backgrounds,
+    matrix,shapes,decorations
+}
